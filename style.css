@@ -12,6 +12,12 @@ header {
     color: #333;
 }
 
+header a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: #333 dotted 1px;
+}
+
 h1,
 h2 {
     font-weight: normal;

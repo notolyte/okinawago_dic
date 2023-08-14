@@ -2,15 +2,27 @@
 <html>
 
 <head>
-
+    <title>沖縄語辞典オンライン</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body onload="readFile()">
+    <h1>沖縄語辞典オンライン</h1>
     <form name="search" onsubmit="return false;">
         <input type="text" name="field">
         <button id="searchbutton">検索</button>
     </form>
-    <div id="result"></div>
+    <section>
+        <h2>検索結果</h2>
+        <div id="result"></div>
+    </section>
+    <section>
+        <h2>検索履歴</h2>
+        <div id="history"></div>
+    </section>
+
+
     <script src="script.js"></script>
 </body>
 

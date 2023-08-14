@@ -12,16 +12,21 @@ document.getElementById("searchbutton").addEventListener("click", () => {
 });
 function search(keyword) {
     const results = document.getElementById("result");
+    const history = document.getElementById("history");
+    history.innerHTML = results.innerHTML + history.innerHTML;
     results.innerHTML = "";
     entries.words.forEach(word => {
         if (word["entry"]["form"] == keyword) {
-            const newResult = document.createElement("p");
-            let resultText = "";
+            const newResult = document.createElement("div");
+            newResult.classList.add("table");
+            let resultHTML = "";
+            resultHTML += "<h3>" + keyword + "</h3>";
+            resultHTML += "<h3>語義</h3>"
             word["translations"].forEach(definition => {
-                resultText += definition["forms"][0];
-                resultText += "\n";
+                resultHTML += "<p>" + definition["forms"][0] + "</p>";
             })
-            newResult.innerText = resultText;
+            resultHTML += "<h3>発音</h3><p>" + word["contents"][0]["text"] + "</p>";
+            newResult.innerHTML = resultHTML;
             results.appendChild(newResult);
         }
     })

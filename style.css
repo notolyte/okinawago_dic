@@ -1,0 +1,11 @@
+section {
+    float: left;
+    width: 50%;
+}
+
+.table {
+    background: #eee;
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Alegreya Sans', sans-serif;
+}

@@ -67,14 +67,6 @@ section {
     padding: 30px;
 }
 
-section:first-of-type {
-    width: 50%;
-}
-
-section:nth-of-type(2) {
-    width: 40%;
-}
-
 .table {
     background: #eee;
     margin: 5px;
@@ -104,4 +96,37 @@ section:nth-of-type(2) {
 
 #history .now {
     display: none;
+}
+
+@media screen and (min-width:481px) {
+    section:first-of-type {
+        width: 50%;
+    }
+
+    section:nth-of-type(2) {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    h1 {
+        position: relative;
+        top: 15px;
+    }
+
+    form {
+        width: 100%;
+        text-align: center;
+    }
+
+    section {
+        float: none;
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+
+    #result .table {
+        width: calc(100% - 20px);
+        line-height: 1.4em;
+    }
 }

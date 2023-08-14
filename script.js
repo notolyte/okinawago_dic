@@ -18,6 +18,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
         keyword = keyword.replaceAll(cor[0], cor[1]);
     })
     keyword = keyword.replace(/n([^aeiouj])/g, "ɴ$1");
+    keyword = keyword.replace(/n$/g, "ɴ");
     search(keyword);
 });
 function search(keyword) {

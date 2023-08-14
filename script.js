@@ -1,18 +1,23 @@
 let entries, entries2;
 async function readFile() {
     const requestURL =
-        "https://raw.githubusercontent.com/notolyte/okinawago_dic/main/okinawa_hondo.json";
+        "https://raw.githubusercontent.com/notolyte/okinawago_dic/beta/okinawa_hondo.json";
     const request = new Request(requestURL);
 
     const response = await fetch(request);
     entries = await response.json();
-    const requestURL2 = "https://raw.githubusercontent.com/notolyte/okinawago_dic/main/hondo_okinawa.json";
+    const requestURL2 = "https://raw.githubusercontent.com/notolyte/okinawago_dic/beta/hondo_okinawa.json";
     const request2 = new Request(requestURL2);
     const response2 = await fetch(request2);
     entries2 = await response2.json();
 }
 document.getElementById("searchbutton").addEventListener("click", () => {
-    search(document.forms.search.field.value);
+    let keyword = document.forms.search.field.value;
+    const correpondences = [["?", "ʔ"], ["Q", "ꞯ"], ["N", "ɴ"], ["S", "ş"], ["Z", "z̧"], ["C", "ç"]];
+    correpondences.forEach(cor => {
+        keyword = keyword.replaceAll(cor[0], cor[1]);
+    })
+    search(keyword);
 });
 function search(keyword) {
     const results = document.getElementById("result");

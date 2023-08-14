@@ -47,7 +47,7 @@ form {
     width: 50%;
 }
 
-input {
+input[type="text"] {
     border: none;
     outline: none;
     border-bottom: 3px dotted seagreen;
@@ -56,6 +56,14 @@ input {
     color: #333;
     height: 1.5rem;
     padding: 0 5px;
+}
+
+input[type="checkbox"] {
+    accent-color: seagreen;
+}
+
+label {
+    padding: 3px;
 }
 
 button {

@@ -13,19 +13,12 @@ async function readFile() {
 }
 document.getElementById("searchbutton").addEventListener("click", () => {
     let keyword = document.forms.search.field.value;
-    const correpondences = [["?", "ʔ"], ["Q", "ꞯ"], ["N", "ɴ"], ["S", "ş"], ["Z", "z̧"], ["C", "ç"]];
+    const correpondences = [["?", "ʔ"], ["Q", "ꞯ"], ["q", "ꞯ"], ["N", "ɴ"], ["S", "ş"], ["Z", "z̧"], ["C", "ç"]];
     correpondences.forEach(cor => {
         keyword = keyword.replaceAll(cor[0], cor[1]);
     })
-    if (keyword[0] == "a" || keyword[0] == "e" || keyword[0] == "i" || keyword[0] == "o" || keyword[0] == "u" || keyword[0] == "j" || keyword[0] == "ɴ" || keyword[0] == "m" || keyword[0] == "w") {
-        search("ʔ" + keyword);
-        search(keyword);
-        vowelEscape = 1;
-        search("'" + keyword);
-        vowelEscape = 0;
-    } else {
-        search(keyword);
-    }
+    keyword = keyword.replace(/n([^aeiou])/g, "ɴ$1");
+    search(keyword);
 });
 function search(keyword) {
     let count = 0;
@@ -35,8 +28,24 @@ function search(keyword) {
     document.querySelectorAll("#history div").forEach(item => {
         item.classList.remove("now");
     });
+
     entries.words.forEach(word => {
-        if (word["entry"]["form"] == keyword) {
+        let record = word["entry"]["form"];
+        if (document.forms.search.sczFazzy.checked) {
+            const correpondences = [["ş", "s"], ["z̧", "z"], ["c", "ç"]];
+            correpondences.forEach(cor => {
+                record = record.replaceAll(cor[0], cor[1]);
+                keyword = keyword.replaceAll(cor[0], cor[1]);
+            })
+        }
+        if (document.forms.search.glottalFazzy.checked) {
+            const correpondences = [["'", ""], ["ʔ", ""]];
+            correpondences.forEach(cor => {
+                record = record.replaceAll(cor[0], cor[1]);
+                keyword = keyword.replaceAll(cor[0], cor[1]);
+            })
+        }
+        if (record == keyword) {
             results.appendChild(drawCard(word["entry"]["id"]));
             history.prepend(drawCard(word["entry"]["id"]));
             count++;

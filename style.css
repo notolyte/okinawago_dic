@@ -4,7 +4,14 @@
 
 section {
     float: left;
-    width: 50%;
+}
+
+section:first-of-type {
+    width: 60%;
+}
+
+section:nth-of-type(2) {
+    width: 40%;
 }
 
 .table {
@@ -13,14 +20,25 @@ section {
     padding: 5px;
 }
 
-.table p {
-    font-size: 13px;
+#result .table p {
+    font-size: 14px;
 }
 
-h3 {
-    font-size: 15px;
+#result h3 {
+    font-size: 16px;
 }
 
-.tmp_none {
+.midasi {
+    display: inline-block;
+    padding-right: 3rem;
+}
+
+#history h3,
+#history p {
+    font-size: 12px;
+    margin: auto 0;
+}
+
+#history .now {
     display: none;
 }

@@ -15,30 +15,26 @@ function search(keyword) {
     const history = document.getElementById("history");
     results.innerHTML = "";
     document.querySelectorAll("#history div").forEach(item => {
-        item.classList.remove("tmp_none");
+        item.classList.remove("now");
     });
     entries.words.forEach(word => {
         if (word["entry"]["form"] == keyword) {
-            const newResult = document.createElement("div");
-            newResult.classList.add("table");
-            let resultHTML = "";
-            const newHistory = document.createElement("div");
-            newHistory.classList.add("table");
-            let newHistoryHTML = "";
-            resultHTML += "<h3>" + keyword + "</h3>";
-            newHistoryHTML += "<h3>" + keyword + "</h3>";
-            resultHTML += "<h3>語義</h3>"
-            word["translations"].forEach(definition => {
-                const thisDef = definition["forms"][0].replaceAll(",", "，");
-                resultHTML += "<p>" + thisDef + "</p>";
-                newHistoryHTML += "<p>" + thisDef + "</p>";
-            })
-            resultHTML += "<h3>発音</h3><p>" + word["contents"][0]["text"] + "</p>";
-            newResult.innerHTML = resultHTML;
-            newHistory.innerHTML = newHistoryHTML;
-            newHistory.classList.add("tmp_none");
-            results.appendChild(newResult);
-            history.prepend(newHistory);
+            results.appendChild(drawCard(word["entry"]["id"]));
+            history.prepend(drawCard(word["entry"]["id"]));
         }
     })
+}
+function drawCard(id) {
+    const newCard = document.createElement("div");
+    const word = entries["words"][id - 1];
+    newCard.innerHTML
+        = "<h3 class='midasi'>" + word["contents"][0]["text"] + "</h3>"
+        + "<p class='midasi'>" + word["translations"][0]["title"] + "</p>";
+    word["translations"].forEach(definition => {
+        const thisDef = definition["forms"][0].replaceAll(",", "，");
+        newCard.innerHTML += "<p>" + thisDef + "</p>";
+    })
+    newCard.classList.add("table");
+    newCard.classList.add("now");
+    return newCard;
 }

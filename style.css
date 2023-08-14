@@ -1,13 +1,74 @@
 * {
     font-family: 'Alegreya Sans', serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    background: paleturquoise;
+    color: #333;
+}
+
+h1,
+h2 {
+    font-weight: normal;
+}
+
+h1:after {
+    content: 'NINJAL Okinawan Dictionary Online (Unofficial)';
+    display: block;
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 16px;
+    padding: 5px;
+}
+
+#license {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    font-size: 12px;
+}
+
+form {
+    padding-top: 2rem;
+    margin: auto;
+    width: 50%;
+}
+
+input {
+    border: none;
+    outline: none;
+    border-bottom: 3px dotted #9b7476;
+    background: rgba(256, 256, 256, 0.5);
+    width: 80%;
+    color: #333;
+    height: 1.5rem;
+    padding: 0 5px;
+}
+
+button {
+    border: none;
+    outline: none;
+    color: white;
+    padding: 4px;
+    height: 1.6rem;
+    background: #9b7476;
 }
 
 section {
     float: left;
+    margin: auto 0;
+    padding: 30px;
 }
 
 section:first-of-type {
-    width: 60%;
+    width: 50%;
 }
 
 section:nth-of-type(2) {
@@ -22,10 +83,12 @@ section:nth-of-type(2) {
 
 #result .table p {
     font-size: 14px;
+    margin: inherit;
 }
 
 #result h3 {
     font-size: 16px;
+    margin: inherit;
 }
 
 .midasi {

@@ -8,11 +8,16 @@
 </head>
 
 <body onload="readFile()">
-    <h1>沖縄語辞典オンライン</h1>
-    <form name="search" onsubmit="return false;">
-        <input type="text" name="field">
-        <button id="searchbutton">検索</button>
-    </form>
+    <header>
+        <h1>沖縄語辞典オンライン</h1>
+        <p id="license">国立国語研究所「沖縄語辞典」を改変して作成 CC 4.0 BY</p>
+        <form name="search" onsubmit="return false;">
+            <input type="text" name="field" placeholder="ここに入力して検索">
+            <button id="searchbutton">検索</button>
+        </form>
+
+    </header>
+
     <section>
         <h2>検索結果</h2>
         <div id="result"></div>

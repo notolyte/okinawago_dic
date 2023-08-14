@@ -19,6 +19,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     })
     if (keyword[0] == "a" || keyword[0] == "e" || keyword[0] == "i" || keyword[0] == "o" || keyword[0] == "u" || keyword[0] == "j") {
         search("ʔ" + keyword);
+        search(keyword);
         vowelEscape = 1;
         search("'" + keyword);
         vowelEscape = 0;

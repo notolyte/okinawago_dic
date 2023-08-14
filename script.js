@@ -17,7 +17,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     correpondences.forEach(cor => {
         keyword = keyword.replaceAll(cor[0], cor[1]);
     })
-    if (keyword[0] == "a" || keyword[0] == "e" || keyword[0] == "i" || keyword[0] == "o" || keyword[0] == "u" || keyword[0] == "j") {
+    if (keyword[0] == "a" || keyword[0] == "e" || keyword[0] == "i" || keyword[0] == "o" || keyword[0] == "u" || keyword[0] == "j" || keyword[0] == "ɴ" || keyword[0] == "m" || keyword[0] == "w") {
         search("ʔ" + keyword);
         search(keyword);
         vowelEscape = 1;

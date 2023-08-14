@@ -17,7 +17,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     correpondences.forEach(cor => {
         keyword = keyword.replaceAll(cor[0], cor[1]);
     })
-    keyword = keyword.replace(/n([^aeiou])/g, "ɴ$1");
+    keyword = keyword.replace(/n([^aeiouj])/g, "ɴ$1");
     search(keyword);
 });
 function search(keyword) {

@@ -1,4 +1,4 @@
-let entries, entries2;
+let entries, entries2, vowelEscape = 0;
 async function readFile() {
     const requestURL =
         "https://raw.githubusercontent.com/notolyte/okinawago_dic/main/okinawa_hondo.json";
@@ -17,13 +17,20 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     correpondences.forEach(cor => {
         keyword = keyword.replaceAll(cor[0], cor[1]);
     })
-    search(keyword);
+    if (keyword[0] == "a" || keyword[0] == "e" || keyword[0] == "i" || keyword[0] == "o" || keyword[0] == "u") {
+        search("ʔ" + keyword);
+        vowelEscape = 1;
+        search("'" + keyword);
+        vowelEscape = 0;
+    } else {
+        search(keyword);
+    }
 });
 function search(keyword) {
     let count = 0;
     const results = document.getElementById("result");
     const history = document.getElementById("history");
-    results.innerHTML = "";
+    if (!vowelEscape) { results.innerHTML = ""; }
     document.querySelectorAll("#history div").forEach(item => {
         item.classList.remove("now");
     });
@@ -41,7 +48,7 @@ function search(keyword) {
             count++;
         }
     });
-    if (!count) { results.innerText = "見つかりませんでした"; }
+    if (!count && !vowelEscape) { results.innerText = "見つかりませんでした"; }
 }
 function drawCard(id) {
     const newCard = document.createElement("div");

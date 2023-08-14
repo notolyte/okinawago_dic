@@ -20,6 +20,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     search(keyword);
 });
 function search(keyword) {
+    let count = 0;
     const results = document.getElementById("result");
     const history = document.getElementById("history");
     results.innerHTML = "";
@@ -30,14 +31,17 @@ function search(keyword) {
         if (word["entry"]["form"] == keyword) {
             results.appendChild(drawCard(word["entry"]["id"]));
             history.prepend(drawCard(word["entry"]["id"]));
+            count++;
         }
     });
     entries2.words.forEach(word => {
         if (word["entry"]["form"] == keyword) {
             results.appendChild(drawCard2(word["entry"]["id"]));
             history.prepend(drawCard2(word["entry"]["id"]));
+            count++;
         }
     });
+    if (!count) { results.innerText = "見つかりませんでした"; }
 }
 function drawCard(id) {
     const newCard = document.createElement("div");

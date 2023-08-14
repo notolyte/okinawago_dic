@@ -1,4 +1,11 @@
 let entries, entries2, vowelEscape = 0;
+window.onload = () => {
+    readFile();
+    const query = decodeURI(location.search.slice(1));
+    if (query) {
+        document.forms.search.field.value = query;
+    }
+}
 async function readFile() {
     const requestURL =
         "https://raw.githubusercontent.com/notolyte/okinawago_dic/main/okinawa_hondo.json";
@@ -12,6 +19,9 @@ async function readFile() {
     entries2 = await response2.json();
 }
 document.getElementById("searchbutton").addEventListener("click", () => {
+    presearch();
+});
+function presearch() {
     let keyword = document.forms.search.field.value;
     const correpondences = [["?", "ʔ"], ["Q", "ꞯ"], ["N", "ɴ"], ["S", "ş"], ["Z", "z̧"], ["C", "ç"]];
     correpondences.forEach(cor => {
@@ -25,7 +35,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     } else {
         search(keyword);
     }
-});
+}
 function search(keyword) {
     let count = 0;
     const results = document.getElementById("result");

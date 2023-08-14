@@ -15,7 +15,7 @@ document.getElementById("searchbutton").addEventListener("click", () => {
     let keyword = document.forms.search.field.value;
     const correpondences = [["?", "ʔ"], ["Q", "ꞯ"], ["N", "ɴ"], ["S", "ş"], ["Z", "z̧"], ["C", "ç"]];
     correpondences.forEach(cor => {
-        keyword.replaceAll(cor[0], cor[1]);
+        keyword = keyword.replaceAll(cor[0], cor[1]);
     })
     search(keyword);
 });

@@ -1,3 +1,7 @@
+* {
+    font-family: 'Alegreya Sans', serif;
+}
+
 section {
     float: left;
     width: 50%;
@@ -7,5 +11,16 @@ section {
     background: #eee;
     margin: 5px;
     padding: 5px;
-    font-family: 'Alegreya Sans', sans-serif;
+}
+
+.table p {
+    font-size: 13px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+.tmp_none {
+    display: none;
 }

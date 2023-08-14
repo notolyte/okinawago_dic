@@ -44,7 +44,7 @@ form {
 input {
     border: none;
     outline: none;
-    border-bottom: 3px dotted #9b7476;
+    border-bottom: 3px dotted seagreen;
     background: rgba(256, 256, 256, 0.5);
     width: 80%;
     color: #333;
@@ -58,7 +58,7 @@ button {
     color: white;
     padding: 4px;
     height: 1.6rem;
-    background: #9b7476;
+    background: seagreen;
 }
 
 section {
@@ -76,6 +76,7 @@ section {
 #result .table p {
     font-size: 14px;
     margin: inherit;
+    line-height: 1.4em;
 }
 
 #result h3 {
@@ -127,6 +128,5 @@ section {
 
     #result .table {
         width: calc(100% - 20px);
-        line-height: 1.4em;
     }
 }
